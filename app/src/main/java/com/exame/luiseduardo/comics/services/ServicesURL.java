@@ -13,6 +13,5 @@ public class ServicesURL {
     //SERVICES
     public static final String LIST_CHARACTER = "characters";
     public static final String GET_CHARACTER = "characters/{idCharacter}";
-
-    public static final String LIST_COMICS = "{idCharacter}/comics";
+    public static final String LIST_COMICS = "characters/{idCharacter}/comics";
 }

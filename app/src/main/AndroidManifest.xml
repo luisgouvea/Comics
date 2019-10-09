@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".activity.ListCharacterActivity" />
         <activity android:name=".activity.DetailsCharacterActivity"></activity>
+        <activity android:name=".activity.ListComicsActivity" />
     </application>
 
 </manifest>

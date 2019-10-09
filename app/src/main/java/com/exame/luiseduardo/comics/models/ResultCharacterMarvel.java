@@ -3,13 +3,13 @@ package com.exame.luiseduardo.comics.models;
 public class ResultCharacterMarvel {
 
     public DataCharacterMarvel getDataCharacterMarvel() {
-        return dataCharacterMarvel;
+        return data;
     }
 
     public void setDataCharacterMarvel(DataCharacterMarvel dataCharacterMarvel) {
-        this.dataCharacterMarvel = dataCharacterMarvel;
+        this.data = dataCharacterMarvel;
     }
 
-    private DataCharacterMarvel dataCharacterMarvel;
+    private DataCharacterMarvel data;
 
 }

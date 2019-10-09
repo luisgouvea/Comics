@@ -21,6 +21,7 @@ public class ListComicsActivity extends BaseActivity implements ListComicsCallba
     private ArrayList<Comics> listComics;
     private ListComicsCallback callback = this;
     private ListComicsAdapter.ClickListener clickListener = this;
+    public static int idCharacter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class ListComicsActivity extends BaseActivity implements ListComicsCallba
 
     public void listComicsRequest() {
         ListComicsRequest listComicsRequest = new ListComicsRequest(callback);
-        listComicsRequest.listComics(22);
+        listComicsRequest.listComics(idCharacter);
     }
 
     @Override

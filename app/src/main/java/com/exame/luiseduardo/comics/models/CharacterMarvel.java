@@ -4,6 +4,25 @@ public class CharacterMarvel {
     private int id;
     private String name;
     private Thumbnail thumbnail;
+    private String modified;
+
+    public String getModified() {
+        return modified;
+    }
+
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
     private Comics comics;
 
     public int getId() {
