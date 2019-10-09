@@ -1,4 +1,4 @@
-package com.exame.luiseduardo.comics.services.listCharacter.list;
+package com.exame.luiseduardo.comics.services.Character.list;
 
 import com.exame.luiseduardo.comics.models.CharacterMarvel;
 

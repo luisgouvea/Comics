@@ -1,8 +1,8 @@
-package com.exame.luiseduardo.comics.services.listCharacter.list;
+package com.exame.luiseduardo.comics.services.Character.list;
 
 import com.exame.luiseduardo.comics.models.CharacterMarvel;
 import com.exame.luiseduardo.comics.retrofit.InitialRetrofit;
-import com.exame.luiseduardo.comics.services.listCharacter.CharacterMethodsInterface;
+import com.exame.luiseduardo.comics.services.Character.CharacterMethodsInterface;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -19,13 +19,13 @@ public class ListCharacterRequest {
         this.listCharacterCallback = listCharacterCallback;
     }
 
-    public void getOrderRequest(String numberOrder) {
-        execute(numberOrder);
+    public void listCharacter(String limit) {
+        execute(limit);
     }
 
-    private void execute(String numberOrder) {
+    private void execute(String limit) {
         final CharacterMethodsInterface characterMethodsInterface = InitialRetrofit.getRetrofit().create(CharacterMethodsInterface.class);
-        Call<ArrayList<CharacterMarvel>> call = characterMethodsInterface.listCharacter("d");
+        Call<ArrayList<CharacterMarvel>> call = characterMethodsInterface.listCharacter(limit);
         call.enqueue(new Callback<ArrayList<CharacterMarvel>>() {
             @Override
             public void onResponse(Call<ArrayList<CharacterMarvel>> call, retrofit2.Response<ArrayList<CharacterMarvel>> response) {

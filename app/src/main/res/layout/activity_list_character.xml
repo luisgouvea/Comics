@@ -30,13 +30,13 @@
 
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutContainer"
+                    android:id="@+id/linearLayoutRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <android.support.v7.widget.RecyclerView
-                        android:id="@+id/RVList"
+                        android:id="@+id/idRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="5dp"
