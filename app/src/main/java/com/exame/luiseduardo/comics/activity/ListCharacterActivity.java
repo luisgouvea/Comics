@@ -1,5 +1,6 @@
 package com.exame.luiseduardo.comics.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,13 +15,13 @@ import com.exame.luiseduardo.comics.services.Character.list.ListCharacterRequest
 
 import java.util.ArrayList;
 
-public class ListCharacterActivity extends BaseActivity implements View.OnClickListener, ListCharacterCallback {
+public class ListCharacterActivity extends BaseActivity implements ListCharacterCallback, ListCharacterAdapter.ClickListener {
 
     private RecyclerView recyclerView;
-    private LinearLayout linearLayoutRecyclerView;
 
-    public static ArrayList<CharacterMarvel> listCharacter;
+    private ArrayList<CharacterMarvel> listCharacter;
     private ListCharacterCallback callback = this;
+    private ListCharacterAdapter.ClickListener clickListener = this;
     private String limit = "2";
 
     @Override
@@ -53,7 +54,6 @@ public class ListCharacterActivity extends BaseActivity implements View.OnClickL
     @Override
     public void setInterfacesFindView() {
         recyclerView = findViewById(R.id.idRecyclerView);
-        linearLayoutRecyclerView = findViewById(R.id.linearLayoutRecyclerView);
     }
 
     @Override
@@ -62,15 +62,10 @@ public class ListCharacterActivity extends BaseActivity implements View.OnClickL
 
     private void buildRecyclerView() {
         if (listCharacter != null && listCharacter.size() > 0 ) {
-            ListCharacterAdapter listCharacterAdapter = new ListCharacterAdapter(listCharacter);
+            ListCharacterAdapter listCharacterAdapter = new ListCharacterAdapter(listCharacter, clickListener);
             recyclerView.setAdapter(listCharacterAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         }
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     public void listCharacterRequest() {
@@ -87,5 +82,14 @@ public class ListCharacterActivity extends BaseActivity implements View.OnClickL
     @Override
     public void listCharacterCallbackFail(Throwable errorResponseAPI) {
 
+    }
+
+    @Override
+    public void openDetailsCharacter(View v, int position) {
+        CharacterMarvel character = listCharacter.get(position);
+        DetailsCharacterActivity.idCharacter = character.getId();
+
+        Intent intentCharge = new Intent(getContext(), DetailsCharacterActivity.class);
+        getContext().startActivity(intentCharge);
     }
 }

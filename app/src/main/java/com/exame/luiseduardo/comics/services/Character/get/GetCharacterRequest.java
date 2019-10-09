@@ -16,11 +16,11 @@ public class GetCharacterRequest {
         this.getCharacterCallback = getCharacterCallback;
     }
 
-    public void getOrderRequest(String numberOrder) {
-        execute(numberOrder);
+    public void getCharacter(int idCharacter) {
+        execute(idCharacter);
     }
 
-    private void execute(String numberOrder) {
+    private void execute(int idCharacter) {
         final CharacterMethodsInterface characterMethodsInterface = InitialRetrofit.getRetrofit().create(CharacterMethodsInterface.class);
         /*Call<ArrayList<CharacterMarvel>> call = characterMethodsInterface.listCharacter("d", "001ac6c73378bbfff488a36141458af2", "", "");
         call.enqueue(new Callback<ArrayList<CharacterMarvel>>() {
