@@ -30,7 +30,7 @@ public class ListCharacterAdapter extends RecyclerView.Adapter<ListCharacterAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.textViewDescription.setText(listCharacter.get(position).getName());
+        holder.textViewName.setText(listCharacter.get(position).getName());
 
     }
 
@@ -41,7 +41,7 @@ public class ListCharacterAdapter extends RecyclerView.Adapter<ListCharacterAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView textViewDescription;
+        TextView textViewName;
         TextView textViewQtd;
         TextView textViewBarcode;
 
@@ -50,7 +50,7 @@ public class ListCharacterAdapter extends RecyclerView.Adapter<ListCharacterAdap
         public ViewHolder(View itemView) {
             super(itemView);
 
-            //textViewDescription = itemView.findViewById(R.id.textViewDescription);
+            textViewName = itemView.findViewById(R.id.textViewName);
         }
     }
 }

@@ -9,15 +9,19 @@ import android.widget.LinearLayout;
 import com.exame.luiseduardo.comics.R;
 import com.exame.luiseduardo.comics.models.CharacterMarvel;
 import com.exame.luiseduardo.comics.recyclerView.adapter.ListCharacterAdapter;
+import com.exame.luiseduardo.comics.services.Character.list.ListCharacterCallback;
+import com.exame.luiseduardo.comics.services.Character.list.ListCharacterRequest;
 
 import java.util.ArrayList;
 
-public class ListCharacterActivity extends BaseActivity implements View.OnClickListener {
+public class ListCharacterActivity extends BaseActivity implements View.OnClickListener, ListCharacterCallback {
 
     private RecyclerView recyclerView;
     private LinearLayout linearLayoutRecyclerView;
 
     public static ArrayList<CharacterMarvel> listCharacter;
+    private ListCharacterCallback callback = this;
+    private String limit = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class ListCharacterActivity extends BaseActivity implements View.OnClickL
     public void onStart() {
         super.onStart();
         this.initialInterfaceActivity();
+        listCharacterRequest();
         buildRecyclerView();
     }
 
@@ -56,13 +61,31 @@ public class ListCharacterActivity extends BaseActivity implements View.OnClickL
     }
 
     private void buildRecyclerView() {
-        ListCharacterAdapter listCharacterAdapter = new ListCharacterAdapter(listCharacter);
-        recyclerView.setAdapter(listCharacterAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if (listCharacter != null && listCharacter.size() > 0 ) {
+            ListCharacterAdapter listCharacterAdapter = new ListCharacterAdapter(listCharacter);
+            recyclerView.setAdapter(listCharacterAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }
     }
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    public void listCharacterRequest() {
+        ListCharacterRequest listCharacterRequest = new ListCharacterRequest(callback);
+        listCharacterRequest.listCharacter(this.limit);
+    }
+
+    @Override
+    public void listCharacterCallbackSuccess(ArrayList<CharacterMarvel> listCharacterMarvel) {
+        this.listCharacter = listCharacterMarvel;
+        buildRecyclerView();
+    }
+
+    @Override
+    public void listCharacterCallbackFail(Throwable errorResponseAPI) {
 
     }
 }

@@ -20,14 +20,14 @@ public class InitialRetrofit {
             public Response intercept(Interceptor.Chain chain) throws IOException {
                 Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .header("ts", "theoser")
-                        .header("apiKey", "001ac6c73378bbfff488a36141458af2")
+                /*Request request = original.newBuilder()
+                        .header("ts", "thesoer")
+                        .header("apikey", "001ac6c73378bbfff488a36141458af2")
                         .header("hash", "72e5ed53d1398abb831c3ceec263f18b")
                         .method(original.method(), original.body())
-                        .build();
+                        .build();*/
 
-                return chain.proceed(request);
+                return chain.proceed(original);
             }
         });
 

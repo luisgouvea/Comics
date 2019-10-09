@@ -22,7 +22,7 @@ public class GetCharacterRequest {
 
     private void execute(String numberOrder) {
         final CharacterMethodsInterface characterMethodsInterface = InitialRetrofit.getRetrofit().create(CharacterMethodsInterface.class);
-        Call<ArrayList<CharacterMarvel>> call = characterMethodsInterface.listCharacter("d");
+        /*Call<ArrayList<CharacterMarvel>> call = characterMethodsInterface.listCharacter("d", "001ac6c73378bbfff488a36141458af2", "", "");
         call.enqueue(new Callback<ArrayList<CharacterMarvel>>() {
             @Override
             public void onResponse(Call<ArrayList<CharacterMarvel>> call, retrofit2.Response<ArrayList<CharacterMarvel>> response) {
@@ -34,6 +34,6 @@ public class GetCharacterRequest {
             public void onFailure(Call<ArrayList<CharacterMarvel>> call, Throwable t) {
                 getCharacterCallback.getCharacterCallbackFail(t);
             }
-        });
+        });*/
     }
 }
