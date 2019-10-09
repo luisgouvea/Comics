@@ -33,7 +33,9 @@ public class ListCharacterAdapter extends RecyclerView.Adapter<ListCharacterAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.textViewName.setText(listCharacter.get(position).getName());
-        String url = listCharacter.get(position).getThumbnail().getPath() + "/portrait_xfantastic." + listCharacter.get(position).getThumbnail().getExtension();
+        holder.textViewNumberComics.setText(String.valueOf(listCharacter.get(position).getComics().getAvailable()));
+
+        String url = listCharacter.get(position).getThumbnail().getPath() + "/portrait_xlarge." + listCharacter.get(position).getThumbnail().getExtension();
         Picasso.get().load(url).into(holder.imageViewThumbnail);
     }
 
@@ -46,7 +48,7 @@ public class ListCharacterAdapter extends RecyclerView.Adapter<ListCharacterAdap
 
         TextView textViewName;
         ImageView imageViewThumbnail;
-        TextView textViewQtd;
+        TextView textViewNumberComics;
         TextView textViewBarcode;
 
 
@@ -55,6 +57,7 @@ public class ListCharacterAdapter extends RecyclerView.Adapter<ListCharacterAdap
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewName);
             imageViewThumbnail = itemView.findViewById(R.id.imageViewThumbnail);
+            textViewNumberComics = itemView.findViewById(R.id.textViewNumberComics);
         }
     }
 }

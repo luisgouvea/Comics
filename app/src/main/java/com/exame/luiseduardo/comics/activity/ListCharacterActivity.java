@@ -21,7 +21,7 @@ public class ListCharacterActivity extends BaseActivity implements View.OnClickL
 
     public static ArrayList<CharacterMarvel> listCharacter;
     private ListCharacterCallback callback = this;
-    private String limit = "1";
+    private String limit = "2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
