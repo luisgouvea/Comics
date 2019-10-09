@@ -1,16 +1,10 @@
 package com.exame.luiseduardo.comics.services.Character.list;
 
-import com.exame.luiseduardo.comics.models.CharacterMarvel;
-import com.exame.luiseduardo.comics.models.ResultListCharacter;
+import com.exame.luiseduardo.comics.models.ResultCharacterMarvel;
 import com.exame.luiseduardo.comics.retrofit.InitialRetrofit;
 import com.exame.luiseduardo.comics.services.Character.CharacterMethodsInterface;
 import com.exame.luiseduardo.comics.services.ServicesURL;
 import com.exame.luiseduardo.comics.util.LibraryUtil;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,16 +22,16 @@ public class ListCharacterRequest {
 
     private void execute(String limit) {
         final CharacterMethodsInterface characterMethodsInterface = InitialRetrofit.getRetrofit().create(CharacterMethodsInterface.class);
-        Call<ResultListCharacter> call = characterMethodsInterface.listCharacter(limit, ServicesURL.API_KEY, ServicesURL.HASH, ServicesURL.TS);
-        call.enqueue(new Callback<ResultListCharacter>() {
+        Call<ResultCharacterMarvel> call = characterMethodsInterface.listCharacter(limit, ServicesURL.API_KEY, ServicesURL.HASH, ServicesURL.TS);
+        call.enqueue(new Callback<ResultCharacterMarvel>() {
             @Override
-            public void onResponse(Call<ResultListCharacter> call, retrofit2.Response<ResultListCharacter> response) {
-                ResultListCharacter resultListCharacter = LibraryUtil.parseObjectToOtherObject(response.body(), ResultListCharacter.class);
-                listCharacterCallback.listCharacterCallbackSuccess(resultListCharacter.getData().getResults());
+            public void onResponse(Call<ResultCharacterMarvel> call, retrofit2.Response<ResultCharacterMarvel> response) {
+                ResultCharacterMarvel resultCharacterMarvelListCharacter = LibraryUtil.parseObjectToOtherObject(response.body(), ResultCharacterMarvel.class);
+                listCharacterCallback.listCharacterCallbackSuccess(resultCharacterMarvelListCharacter.getDataCharacterMarvel().getResults());
             }
 
             @Override
-            public void onFailure(Call<ResultListCharacter> call, Throwable t) {
+            public void onFailure(Call<ResultCharacterMarvel> call, Throwable t) {
                 listCharacterCallback.listCharacterCallbackFail(t);
             }
         });
