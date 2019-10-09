@@ -2,7 +2,7 @@ package com.exame.luiseduardo.comics.models;
 
 import java.util.ArrayList;
 
-public class DataListCharacterMarvel {
+public class DataListCharacter {
 
     public ArrayList<CharacterMarvel> getResults() {
         return results;

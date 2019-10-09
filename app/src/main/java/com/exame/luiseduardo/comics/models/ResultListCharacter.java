@@ -2,14 +2,14 @@ package com.exame.luiseduardo.comics.models;
 
 public class ResultListCharacter {
 
-    public DataListCharacterMarvel getData() {
+    public DataListCharacter getData() {
         return data;
     }
 
-    public void setData(DataListCharacterMarvel data) {
+    public void setData(DataListCharacter data) {
         this.data = data;
     }
 
-    private DataListCharacterMarvel data;
+    private DataListCharacter data;
 
 }
