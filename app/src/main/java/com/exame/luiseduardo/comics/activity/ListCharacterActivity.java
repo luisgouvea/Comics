@@ -22,7 +22,7 @@ public class ListCharacterActivity extends BaseActivity implements ListCharacter
     private ArrayList<CharacterMarvel> listCharacter;
     private ListCharacterCallback callback = this;
     private ListCharacterAdapter.ClickListener clickListener = this;
-    private String limit = "2";
+    private String limit = "10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

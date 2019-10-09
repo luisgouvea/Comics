@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.exame.luiseduardo.comics.R;
 import com.exame.luiseduardo.comics.models.CharacterMarvel;
 import com.exame.luiseduardo.comics.models.Comics;
+import com.exame.luiseduardo.comics.models.Price;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -47,37 +48,53 @@ public class ListComicsAdapter extends RecyclerView.Adapter<ListComicsAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        LinearLayout characterCardContent;
-        TextView textViewName;
+        LinearLayout comicsCardContent;
+        TextView textViewTitle;
         ImageView imageViewThumbnail;
-        TextView textViewNumberComics;
+        TextView textViewNumberPages;
+        TextView textViewPrice;
+
         public ClickListener clickListner;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            characterCardContent = itemView.findViewById(R.id.characterCardContent);
-            textViewName = itemView.findViewById(R.id.textViewName);
+            comicsCardContent = itemView.findViewById(R.id.comicsCardContent);
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
             imageViewThumbnail = itemView.findViewById(R.id.imageViewThumbnail);
-            textViewNumberComics = itemView.findViewById(R.id.textViewNumberComics);
+            textViewNumberPages = itemView.findViewById(R.id.textViewNumberPages);
+            textViewPrice = itemView.findViewById(R.id.textViewPrice);
         }
 
         public void bindData(final Comics comics, ClickListener listner) {
             clickListner = listner;
-            characterCardContent.setOnClickListener(this);
+            comicsCardContent.setOnClickListener(this);
             setInfDefault();
             setInfComicsTarget(comics);
         }
 
         private void setInfDefault() {
-            this.textViewName.setText("Não foi informado");
-            this.textViewNumberComics.setText("Não foi informado");
+            this.textViewTitle.setText("Não foi informado");
+            this.textViewNumberPages.setText("Não foi informado");
         }
 
         private void setInfComicsTarget(Comics comics) {
-            this.textViewName.setText(comics.getAvailable());
+            this.textViewTitle.setText(comics.getTitle());
 
             String url = comics.getThumbnail().getPath() + "/portrait_xlarge." + comics.getThumbnail().getExtension();
             Picasso.get().load(url).into(this.imageViewThumbnail);
+
+            this.textViewNumberPages.setText(String.valueOf(comics.getPageCount()) + " páginas");
+
+            ArrayList<Price> prices = comics.getPrices();
+            double price = 1.00;
+            if (prices.size() > 1) {
+                price  = prices.get(1).getPrice();
+            } else {
+                price  = prices.get(0).getPrice();
+            }
+
+            String g = Double.toString(price);
+            this.textViewPrice.setText(g);
         }
 
         @Override

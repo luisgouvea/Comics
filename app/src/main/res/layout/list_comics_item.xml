@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/userCardContent"
+        android:id="@+id/comicsCardContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -63,7 +63,7 @@
                         android:layout_height="match_parent"
                         android:textSize="12sp"
                         android:textStyle="italic"
-                        android:text="32 páginas" />
+                        android:text="90 páginas" />
 
 
                 </LinearLayout>
